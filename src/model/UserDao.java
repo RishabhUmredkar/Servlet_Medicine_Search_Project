@@ -124,14 +124,6 @@ public class UserDao {
 		return U;
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-
 	public int update(User u) throws ClassNotFoundException, SQLException {
 		Connection con=getconnect();
     	PreparedStatement ps=con.prepareStatement("update tb1 set name=?,number=?,pass=? where email=?");
