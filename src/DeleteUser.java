@@ -6,6 +6,7 @@ import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,16 +14,26 @@ import javax.servlet.http.HttpServletResponse;
 import model.UserDao;
 
 @WebServlet("/delete")
-public class DeleteServ extends HttpServlet {
+public class DeleteUser extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 		PrintWriter out=response.getWriter();
+
 		
-		String mail=request.getParameter("email");
+		Cookie c[] = request.getCookies();
+		if(c!=null)
+		{
+
+			String mail = c[0].getValue();
+
+			
+			if(!mail.equals("")|| mail!=null)
+			{
+		String mail1=request.getParameter("email");
 	    
 		try {
-			int a=new UserDao().delete(mail);
+			int a=new UserDao().delete(mail1);
 			if(a>0)
 			{
 				System.out.print("user delete");
@@ -33,7 +44,7 @@ public class DeleteServ extends HttpServlet {
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}}}
 	
 	
 	}
