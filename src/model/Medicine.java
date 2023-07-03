@@ -2,16 +2,42 @@ package model;
 
 public class Medicine {
 
+	private int id;
 	private String MedicineName;
 	private String CompanyName;
-	private int Number;
+	private String Number;
 	
 	
 	
 	
 	
 	
-	public Medicine(String medicineName, String companyName, int number) {
+	public Medicine(int id, String medicineName, String companyName, String number) {
+		super();
+		this.id = id;
+		MedicineName = medicineName;
+		CompanyName = companyName;
+		Number = number;
+	}
+
+
+
+
+	public int getId() {
+		return id;
+	}
+
+
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
+
+
+	public Medicine(String medicineName, String companyName, String number) {
 		super();
 		MedicineName = medicineName;
 		CompanyName = companyName;
@@ -21,7 +47,7 @@ public class Medicine {
 	
 	
 	
-	public Medicine(String medicineName, int number) {
+	public Medicine(String medicineName, String number) {
 		super();
 		MedicineName = medicineName;
 		Number = number;
@@ -30,9 +56,9 @@ public class Medicine {
 
 
 
-	public Medicine(int number) {
+	public Medicine(int id) {
 		super();
-		Number = number;
+		id = id;
 	}
 
 
@@ -57,10 +83,10 @@ public class Medicine {
 	public void setCompanyName(String companyName) {
 		CompanyName = companyName;
 	}
-	public int getNumber() {
+	public String getNumber() {
 		return Number;
 	}
-	public void setNumber(int number) {
+	public void setNumber(String number) {
 		Number = number;
 	}
 
@@ -69,7 +95,8 @@ public class Medicine {
 
 	@Override
 	public String toString() {
-		return "Medicine [MedicineName=" + MedicineName + ", CompanyName=" + CompanyName + ", Number=" + Number + "]";
+		return "Medicine [id=" + id + ", MedicineName=" + MedicineName + ", CompanyName=" + CompanyName + ", Number="
+				+ Number + "]";
 	}
 	
 	

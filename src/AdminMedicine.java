@@ -53,8 +53,8 @@ public class AdminMedicine extends HttpServlet {
 		        
 		out.print("<ul class='nav-area'>");
 		out.print("<li><a href='user'>View</a></li>");
-		out.print("<li><a href='adminprofile'>medicine</a></li>");
-		out.print("<li><a href='addmedicine'>Services</a></li>");
+		out.print("<li><a href='medicine'>medicine</a></li>");
+		out.print("<li><a href='addmedicine'>Add Medicine</a></li>");
 		out.print("<li><a href='#'>Portfolio</a></li>");
 		out.print("<li><a href='logout'>LogOut</a></li>");
 		out.print("</ul>");
@@ -73,7 +73,7 @@ public class AdminMedicine extends HttpServlet {
 				{
 				out.print("<tr><td>"+e.getId()+"</td><td>"+e.getMedicineName()+"</td><td> "+e.getCompanyName()+"</td><td> "+e.getNumber()+
 						
-						"<td><a href='edit?email="+e.getId()+"' class='btn btn-primary'>Edit</a><span>    <span><a href='delete?email="+e.getId()+"' class='btn btn-danger'>Delete</a></td></tr>");
+						"<td><a href='editmedicine?id="+e.getId()+"' class='btn btn-primary'>Edit</a><span>    <span><a href='deletemedicine?id="+e.getId()+"' class='btn btn-danger'>Delete</a></td></tr>");
 				}
 				
 				out.print("</table>");
@@ -82,6 +82,7 @@ public class AdminMedicine extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}out.print("</header>");
+			out.print("<a href='addmedicine' type='button' class='cancelbtn'>Add Medicine</button>\n");
 
 			out.print("</body>");
 			out.print("</html>");

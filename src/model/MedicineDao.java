@@ -79,14 +79,13 @@ public class MedicineDao {
 		
 		ResultSet rs = ps.executeQuery();
 		rs.absolute(1);
-		System.out.println("Value of a ="+rs.getString(2));
+		System.out.println("Value of a ="+rs.getString(4));
 
 		Medicine m = new Medicine(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4));
 		
 		return m;
 
 	}
-
 
 	public int update(Medicine m) throws ClassNotFoundException, SQLException {
 		Connection con=getconnect();
@@ -99,6 +98,17 @@ public class MedicineDao {
 		int a=ps.executeUpdate();
 		con.close();
 		return  a;		
+	}
+
+
+	public int delete(int id) throws SQLException, ClassNotFoundException {
+		Connection con=getconnect();
+    	PreparedStatement ps=con.prepareStatement("delete from tb2 where id=?");
+		ps.setInt(1,id);
+	
+		int a=ps.executeUpdate();
+		con.close();
+		return  a;
 	}
 
 	
