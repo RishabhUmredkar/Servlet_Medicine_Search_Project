@@ -41,7 +41,7 @@ public class UserMedicine extends HttpServlet {
 		out.print("<head>");
 		    out.print("<meta charset='UTF-8'>");
 		    out.print("<title>Profile</title>");
-		    out.print("<link href='https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap' rel='stylesheet'>");
+		    out.print("<link href='https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap' rel='stylesheet' media='screen and (max-width: 800px)'>");
 		    out.print("<link rel='stylesheet' href='css/style1.css'>"); 
 		    out.print("<link rel='stylesheet' href='css/table.css'>");    
 		out.print("</head>");
@@ -51,8 +51,8 @@ public class UserMedicine extends HttpServlet {
 		        
 		out.print("<ul class='nav-area'>");
 		out.print("<li><a href='user'>View</a></li>");
-		out.print("<li><a href='adminprofile'>medicine</a></li>");
-		out.print("<li><a href='addmedicine'>Services</a></li>");
+		out.print("<li><a href='medicine'>medicine</a></li>");
+		out.print("<li><a href='addmedicine'>Add Medicine</a></li>");
 		out.print("<li><a href='#'>Portfolio</a></li>");
 		out.print("<li><a href='logout'>LogOut</a></li>");
 		out.print("</ul>");

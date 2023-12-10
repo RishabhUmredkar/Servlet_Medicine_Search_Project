@@ -11,50 +11,49 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.User;
+import model.MedicineDao;
 import model.UserDao;
 
-@WebServlet("/reg")
-public class RegServ extends HttpServlet {
-	
+
+@WebServlet("/deletemedicine")
+public class DeleteMedicine extends HttpServlet {
+
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-		
-		
-		String name = request.getParameter("name");
-		String email = request.getParameter("email");
-		String number = request.getParameter("number");
-		String pass = request.getParameter("pass");
+		PrintWriter out=response.getWriter();
 
-		User u =new User(name,email,number,pass);
 		
-		
-		int a =0;
-		
+		Cookie c[] = request.getCookies();
+		if(c!=null)
+		{
+
+			String mail = c[0].getValue();
+
+			
+			if(!mail.equals("")|| mail!=null)
+			{
+		int id=Integer.parseInt(request.getParameter("id"));
+	    
 		try {
-			a =new UserDao().insert(u);
+			int a=new MedicineDao().delete(id);
+			if(a>0)
+			{
+				System.out.print("Medicine delete");
+			     response.sendRedirect("medicine");
+			}
+			else
+				out.print("user not delete");
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		if(a>0){
-			out.print("user Register !");
-			request.getRequestDispatcher("userprofile").include(request, response);
-			Cookie c = new Cookie("email", number);
-			response.addCookie(c);
-
-
-		}
-		else{
-			out.print("Internal error!");
-			request.getRequestDispatcher("index.html").include(request, response);
-		}
+		}}}
+	
 	
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

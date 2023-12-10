@@ -34,12 +34,12 @@ public class EditUser extends HttpServlet {
 				
 				if(!mail.equals("")|| mail!=null)
 				{
-			String mail1 = request.getParameter("email");
-			System.out.println(mail1);
+			int id = Integer.parseInt(request.getParameter("id"));
+			System.out.println(id);
 			User u = null;
 			int a=0;
 			try {
-				u = new UserDao().getOneUser(mail1);
+				u = new UserDao().getOneUser(id);
 			} catch (ClassNotFoundException | SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -80,6 +80,11 @@ public class EditUser extends HttpServlet {
 					out.print("      </div>\n");
 					out.print("      \n");
 					out.print("      <div class='container'>\n");
+
+					out.print("        <label><b>Id</b></label>\n");
+		               out.print("<input type='text' name='id' value='"+u.getId()+"'>");
+					out.print("        \n");
+
 					out.print("        <label><b>Username</b></label>\n");
 					out.print("<input type='text' name = 'name' placeholder='Enter your name'value='"+u.getName()+"' required>");
 					out.print("\n");
@@ -91,7 +96,7 @@ public class EditUser extends HttpServlet {
 		               out.print("<input type='text' name = 'number' placeholder='Enter ddsds Phone Number 'value='"+u.getNumber()+"' required>");
 					out.print("\n");
 					out.print("        <label><b>Password</b></label>\n");
-		               out.print("<input type='password' name='pass' placeholder='Enter your  dfdfdspassword' 'value='"+u.getPass()+"' required>");
+		               out.print("<input type='password' name='pass' placeholder='Enter your  dfdfdspassword' 'value='"+u.getPass()+"' >");
 					out.print("\n");
 					out.print("        <button type='submit'>Login</button>\n");
 					out.print("        <label>\n");

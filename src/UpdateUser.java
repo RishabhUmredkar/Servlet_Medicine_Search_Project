@@ -21,13 +21,13 @@ public class UpdateUser extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter out=response.getWriter();
 
-		
+		int id = Integer.parseInt(request.getParameter("id"));
 		String name = request.getParameter("name");
 		String mail = request.getParameter("email");
 		String number = request.getParameter("number");
 		String pass = request.getParameter("pass");
 
-		User u =new User(name,mail,number,pass);
+		User u =new User(id,name,mail,number,pass);
 		
 		
 		try {

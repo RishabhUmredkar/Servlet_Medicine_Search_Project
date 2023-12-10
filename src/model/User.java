@@ -2,12 +2,23 @@ package model;
 
 public class User {
 	
+	private int id;
 	private String name;
 	private String email;
 	private String number;
 	private String pass;
 	
 
+	public User(int id, String name, String email, String number, String pass) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.email = email;
+		this.number = number;
+		this.pass = pass;
+	}
+
+	
 	public User(String name, String email, String number, String pass) {
 		super();
 		this.name = name;
@@ -35,6 +46,16 @@ public class User {
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+
+
+	public int getId() {
+		return id;
+	}
+
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 

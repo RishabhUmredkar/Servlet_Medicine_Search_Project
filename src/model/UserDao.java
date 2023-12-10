@@ -84,7 +84,7 @@ public class UserDao {
 		
 		while(rs.next())
 		{
-			User e=new User(rs.getString(1),rs.getString(2), rs.getString(3),rs.getString(4));
+			User e=new User(rs.getInt(1),rs.getString(2), rs.getString(3),rs.getString(4),rs.getString(5));
 			
 			le.add(e);
 		}
@@ -94,10 +94,10 @@ public class UserDao {
 	}
 
 
-	public int delete(String mail) throws ClassNotFoundException, SQLException {
+	public int delete(int id) throws ClassNotFoundException, SQLException {
 		Connection con=getconnect();
-    	PreparedStatement ps=con.prepareStatement("delete from tb1 where email=?");
-		ps.setString(1,mail);
+    	PreparedStatement ps=con.prepareStatement("delete from tb1 where id=?");
+		ps.setInt(1,id);
 	
 		int a=ps.executeUpdate();
 		con.close();
@@ -107,30 +107,39 @@ public class UserDao {
 
 
 
-	public User getOneUser(String mail) throws ClassNotFoundException, SQLException {
-		String sql = "select * from tb1 where email=?";
+	public User getOneUser(int id) throws ClassNotFoundException, SQLException {
+		String sql = "select * from tb1 where id=?";
 		con = getconnect();
 		//PreparedStatement ps = con.prepareStatement(sql);
 		// PreparedStatement ps = con.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 		 PreparedStatement ps = con.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 
-		 ps.setString(1,mail);
+		 ps.setInt(1,id);
 		
 		ResultSet rs = ps.executeQuery();
 		rs.absolute(1);
 		System.out.println("Value of a ="+rs.getString(2));
 
-		User U = new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4));
+		User U = new User(rs.getInt(1),rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
 		return U;
 	}
 	
+	
+	
+	
+	
+	
+	
+	
+
 	public int update(User u) throws ClassNotFoundException, SQLException {
 		Connection con=getconnect();
-    	PreparedStatement ps=con.prepareStatement("update tb1 set name=?,number=?,pass=? where email=?");
+    	PreparedStatement ps=con.prepareStatement("update tb1 set name=?, email=?, number=?,pass=? where id=?");
 		ps.setString(1, u.getName());
-		ps.setString(2, u.getNumber());
-		ps.setString(3, u.getPass());
-		ps.setString(4, u.getEmail());
+		ps.setString(2, u.getEmail());
+		ps.setString(3, u.getNumber());
+		ps.setString(4, u.getPass());
+		ps.setInt(5, u.getId());
 			
 		int a=ps.executeUpdate();
 		con.close();

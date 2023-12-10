@@ -42,14 +42,15 @@ public class AdminProfile extends HttpServlet {
 				        
 				out.print("<ul class='nav-area'>");
 				out.print("<li><a href='user'>View</a></li>");
-				out.print("<li><a href='adminprofile'>Profile</a></li>");
-				out.print("<li><a href='#'>Services</a></li>");
-				out.print("<li><a href='#'>Portfolio</a></li>");
+				out.print("<li><a href='medicine'>medicine</a></li>");
+				out.print("<li><a href='addmedicine'>Add Medicine</a></li>");
+				out.print("<li><a href='#'>Booking Medicine</a></li>");
 				out.print("<li><a href='logout'>LogOut</a></li>");
 				out.print("</ul>");
 				out.print("</div>");
 				out.print("<div class='welcome-text'>");
 				        out.print("<h3>");
+				        
 				out.print("Hello Admin</h3>");
 				    out.print("</div>");
 				out.print("</header>");

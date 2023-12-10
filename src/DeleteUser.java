@@ -30,10 +30,10 @@ public class DeleteUser extends HttpServlet {
 			
 			if(!mail.equals("")|| mail!=null)
 			{
-		String mail1=request.getParameter("email");
+		int id =Integer.parseInt(request.getParameter("id"));
 	    
 		try {
-			int a=new UserDao().delete(mail1);
+			int a=new UserDao().delete(id);
 			if(a>0)
 			{
 				System.out.print("user delete");

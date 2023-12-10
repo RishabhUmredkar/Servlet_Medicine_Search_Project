@@ -29,7 +29,6 @@ public class AdminServ extends HttpServlet {
 
 
 			request.getRequestDispatcher("adminprofile").forward(request, response);
-			out.print("<p style='color:red;'>You are Admin</p>");
 		}
 		else{
 			out.print("<p style='color:red;'>Please signup First</p>");
